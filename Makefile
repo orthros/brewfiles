@@ -4,7 +4,7 @@ all: link ## Links the brewfile
 .PHONY: link
 link:  ## Links the brewfile
 # add aliases for brewfile
-	for file in $(shell find $(CURDIR) -name ".Brewfile"); do \
+	for file in $(shell find $(CURDIR) -name ".Brewfile" -or -name ".darwin"); do \
 		f=$$(basename $$file); \
 		ln -sfn $$file $(HOME)/$$f; \
 	done; \
