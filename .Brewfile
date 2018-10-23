@@ -63,7 +63,6 @@ brew 'mitmproxy', args: ['force-bottle']
 # Commit signing
 brew 'pinentry-mac', args: ['force-bottle']
 brew 'gnupg', args: ['force-bottle']
-cask 'keybase'
 
 # Containers
 brew 'kubernetes-cli'
