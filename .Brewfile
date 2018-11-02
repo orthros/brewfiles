@@ -75,6 +75,7 @@ brew 'cfssl', args: ['force-bottle']
 # Fun tools
 brew 'asciinema', args: ['force-bottle']
 brew 'lolcat', args: ['force-bottle']
+brew 'darksky-weather', args: ['force-bottle']
 
 # kubernetes dev
 brew 'hg', args: ['force-bottle']
