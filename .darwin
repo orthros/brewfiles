@@ -2,16 +2,24 @@
 
 # If we are on OSX, check for brew
 if [ "$(uname -s)" == "Darwin" ]; then
-    if [ -d "$HOME/.homebrew" ]; then
-        export PATH=$HOME/.homebrew/bin:$PATH
-        export LD_LIBRARY_PATH=$HOME/.homebrew/lib:$LD_LIBRARY_PATH
-    fi
-    
-    if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-		# shellcheck source=/dev/null
-        source "$(brew --prefix)/etc/bash_completion"
-    fi
-    
+
+	    if [ -d "$HOME/.homebrew" ]; then
+	        export PATH=$HOME/.homebrew/bin:$PATH
+	        export LD_LIBRARY_PATH=$HOME/.homebrew/lib:$LD_LIBRARY_PATH
+		fi
+
+		export BREWPATH=$(brew --prefix)
+
+		if [ -f "${BREWPATH}/etc/bash_completion" ]; then
+			# shellcheck source=/dev/null
+	        source "${BREWPATH}/etc/bash_completion"
+	    fi
+
+		# gcloud completion scripts via brew cask installation
+		if [ -f "${BREWPATH}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then # brew cask installation
+			# shellcheck source=/dev/null
+			source "${BREWPATH}/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc"
+		fi
     #for completion_file in $(brew --prefix)/etc/bash_completion.d/*; do
     #    source "$completion_file"
     #done
